@@ -6,6 +6,7 @@ sequentially from 0 to n - 1 and each box may contain keys to the other boxes.
 Write a method that determines if all the boxes can be opened.
 """
 
+
 def canUnlockAll(boxes):
     """
      Prototype: def canUnlockAll(boxes)
@@ -27,10 +28,10 @@ def canUnlockAll(boxes):
     for box in unlocked_list:
         # browse the keys in the major list
         for key in boxes[box]:
-            # If the box associated with the key is locked, change it to true
-            if not unlocked_box[key]:
+            # Check key is in range. if box associated with it is locked, true
+            if key < n and not unlocked_box[key]:
                 unlocked_box[key] = True
-                #add the keys to unlocked list
+                # add the keys to unlocked list
                 unlocked_list.append(key)
 
     return all(unlocked_box)
