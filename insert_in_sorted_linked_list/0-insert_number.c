@@ -48,9 +48,9 @@ listint_t *insert_node(listint_t **head, int number)
 			temp = temp->next;
 		}
 	}
-	/* to insert the node at the end of the list */
-	temp->next = new_node;
+	temp->next = new_node; /* to insert the node at the end of the list */
 	return (new_node);
+	free(temp);
 }
 
 
