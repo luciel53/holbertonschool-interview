@@ -1,12 +1,15 @@
 #!/usr/bin/python3
 """
 In a text file, there is a single character H. Your text editor can execute
-only two operations in this file: Copy All and Paste. Given a number n, write a method that calculates the fewest number of operations needed to result in exactly n H characters in the file.
+only two operations in this file: Copy All and Paste. Given a number n, write
+a method that calculates the fewest number of operations needed to result in
+exactly n H characters in the file.
 
     Prototype: def minOperations(n)
     Returns an integer
     If n is impossible to achieve, return 0
 """
+
 
 def minOperations(n):
     """find if n is prime"""
@@ -26,8 +29,8 @@ def minOperations(n):
             # not prime
             prime_number = False
 
-    if prime_number == True:
-        return n #if n is prime, operation number is equal to n
+    if prime_number is True:
+        return n  # if n is prime, operation number is equal to n
 
     # find prime divisors of n and add them
     for i in range(2, n):
