@@ -25,6 +25,7 @@ heap_t *heap_insert(heap_t **root, int value)
 	new_node->n = value;
 	new_node->left = NULL;
 	new_node->right = NULL;
+	new_node->parent = NULL;
 
 	if (*root == NULL) /* if no root, new node become the root */
 	{
@@ -35,7 +36,7 @@ heap_t *heap_insert(heap_t **root, int value)
 	*root = node;
 	while (node->left != NULL || node->right != NULL)
 	{
-		if (value < node->n) /* if value of new node < node value */
+		if (new_node->n < node->n) /* if value of new node < node value */
 		{
 			if (node->left == NULL) /* insert new node if left is empty */
 			{
@@ -58,22 +59,22 @@ heap_t *heap_insert(heap_t **root, int value)
 		return (new_node);
 	}
 	if (node->left == NULL)
-    {
-        node->left = new_node;
-    }
-    else
-    {
-        node->right = new_node;
-    }
-
-    new_node->parent = node;
+	{
+		node->left = new_node;
+	}
+	else
+	{
+		node->right = new_node;
+	}
+	new_node->parent = node;
 	while (new_node->parent != NULL && new_node->n > new_node->parent->n)
-    {
-        int temp = new_node->n;
-        new_node->n = new_node->parent->n;
-        new_node->parent->n = temp;
-        new_node = new_node->parent;
-    }
+	{
+		int temp = new_node->n;
+		new_node->n = new_node->parent->n;
+		new_node->parent->n = temp;
+		new_node = new_node->parent;
+	}
 return (new_node);
+
 }
 
