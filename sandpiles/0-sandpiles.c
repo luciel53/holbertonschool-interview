@@ -95,10 +95,10 @@ int (*sandpile_topple(int grid1[3][3], int grid2[3][3]))[3]
 }
 
 /**
-	* sandpiles_sum - sums 2 sandpiles
+	* sandpiles_sum - computes 2 sandpiles
 	* @grid1: first grid
-	* @grid2: grid to add
-	* Return: none
+	* @grid2: second grid
+	* Return: void
 **/
 void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 {
