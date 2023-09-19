@@ -40,6 +40,9 @@ int is_palindrome(listint_t **head)
 	int *array;
 	int *copy;
 
+		if (current == NULL || current->next == NULL)
+		return (1);
+
 	/* browse the list and iterate size of the future array */
 	while (current != NULL)
 	{
@@ -51,9 +54,6 @@ int is_palindrome(listint_t **head)
 	array = (int *)malloc(sizeof(int) * size);
 	/* allocate memory for the copy */
 	copy = (int *)malloc(sizeof(int) * size);
-
-	if (current == NULL)
-		return (1);
 
 	/* convert the singly linked list in array and recover data with &current */
 	to_array(head, array);
