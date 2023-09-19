@@ -36,6 +36,8 @@ int is_palindrome(listint_t **head)
 	listint_t *node = *head;
 	/* create size variable to use in allocations */
 	int size = 0;
+		/* allocate the array */
+	int *array = (int *)malloc(sizeof(int) * size);
 
 	if (node == NULL || node->next == NULL)
 		return (1);
@@ -46,9 +48,6 @@ int is_palindrome(listint_t **head)
 		node = node->next;
 		size++;
 	}
-
-	/* allocate the array */
-	int *array = (int *)malloc(sizeof(int) * size);
 
 	/* convert the singly linked list in array and recover data with &node */
 	to_array(&node, array);
