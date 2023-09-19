@@ -74,8 +74,6 @@ int is_palindrome(listint_t **head)
 		{
 			return (0);
 		}
-		else if (array[i] == 0 || copy[i] == 0)
-			return (1);
 	}
 	printf("Size of the list: %d\n", size);
 	free(copy);
