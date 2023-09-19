@@ -56,7 +56,10 @@ int is_palindrome(listint_t **head)
 	to_array(&node, array);
 
 	/* copy the array */
-	memcpy(copy, array, sizeof(int) * size);
+	for (i = 0; i < size; i++)
+	{
+		array[i] = copy[i];
+	}
 
 	/* checks if the array is a palindrome */
 	for (i = 0; i < size; i++)
