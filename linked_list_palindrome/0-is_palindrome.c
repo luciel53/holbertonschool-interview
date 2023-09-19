@@ -33,41 +33,39 @@ void to_array(listint_t **head, int *array)
 
 int is_palindrome(listint_t **head)
 {
-	listint_t *node = *head;
+	listint_t *current = *head;
 	/* create size variable to use in allocations */
 	int size = 0;
 	int i;
+
+	/* browse the list and iterate size of the future array */
+	while (current != NULL)
+	{
+		current = current->next;
+		size++;
+	}
+
 	/* allocate the array */
 	int *array = (int *)malloc(sizeof(int) * size);
 	/* allocate memory for the copy */
 	int *copy = (int *)malloc(sizeof(int) * size);
 
-	if (node == NULL || node->next == NULL)
-		return (1);
-
-	/* browse the list and iterate size of the future array */
-	while (node != NULL)
-	{
-		node = node->next;
-		size++;
-	}
-
-	/* convert the singly linked list in array and recover data with &node */
-	to_array(&node, array);
-
+	/* convert the singly linked list in array and recover data with &current */
+	to_array(head, array);
 	/* copy the array */
 	for (i = 0; i < size; i++)
 	{
-		array[i] = copy[i];
+		copy[i] = array[i];
 	}
 
 	/* checks if the array is a palindrome */
 	for (i = 0; i < size; i++)
 	{
 		/* compare the 2 arrays */
-		if (array[i] == copy[i])
-			return (1);
-		return (0);
+		if (array[i] != copy[size - 1 - i])
+		{
+			return (0);
+		}
 	}
-	return (0);
+	return (1);
 }
