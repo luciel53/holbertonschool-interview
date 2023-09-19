@@ -41,7 +41,7 @@ int is_palindrome(listint_t **head)
 	int *copy;
 
 	if (current == NULL || current->next == NULL)
-		return (1);
+	return (1);
 
 	/* browse the list and iterate size of the future array */
 	while (current != NULL)
