@@ -40,17 +40,12 @@ int is_palindrome(listint_t **head)
 	int *array;
 	int *copy;
 
-	if (current == NULL || current->next == NULL)
-	return (1);
-
 	/* browse the list and iterate size of the future array */
 	while (current != NULL)
 	{
 		current = current->next;
 		size++;
 	}
-
-	printf("Size of the list: %d\n", size);
 
 	/* allocate the array */
 	array = (int *)malloc(sizeof(int) * size);
@@ -64,7 +59,6 @@ int is_palindrome(listint_t **head)
 	{
 		copy[i] = array[i];
 	}
-	printf("Size of the list: %d\n", size);
 
 	/* checks if the array is a palindrome */
 	for (i = 0; i < size; i++)
@@ -75,7 +69,6 @@ int is_palindrome(listint_t **head)
 			return (0);
 		}
 	}
-	printf("Size of the list: %d\n", size);
 	free(copy);
 	free(array);
 	return (1);
