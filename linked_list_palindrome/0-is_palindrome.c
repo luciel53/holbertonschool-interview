@@ -52,6 +52,9 @@ int is_palindrome(listint_t **head)
 	/* allocate memory for the copy */
 	copy = (int *)malloc(sizeof(int) * size);
 
+	if (current == NULL)
+		return (1);
+
 	/* convert the singly linked list in array and recover data with &current */
 	to_array(head, array);
 	/* copy the array */
