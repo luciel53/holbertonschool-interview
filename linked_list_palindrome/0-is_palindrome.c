@@ -69,7 +69,7 @@ int is_palindrome(listint_t **head)
 			return (0);
 		}
 	}
-	return (1);
 	free(copy);
 	free(array);
+	return (1);
 }
