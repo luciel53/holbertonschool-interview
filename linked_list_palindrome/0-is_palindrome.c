@@ -37,6 +37,8 @@ int is_palindrome(listint_t **head)
 	/* create size variable to use in allocations */
 	int size = 0;
 	int i;
+	int *array;
+	int *copy;
 
 	/* browse the list and iterate size of the future array */
 	while (current != NULL)
@@ -46,9 +48,9 @@ int is_palindrome(listint_t **head)
 	}
 
 	/* allocate the array */
-	int *array = (int *)malloc(sizeof(int) * size);
+	array = (int *)malloc(sizeof(int) * size);
 	/* allocate memory for the copy */
-	int *copy = (int *)malloc(sizeof(int) * size);
+	copy = (int *)malloc(sizeof(int) * size);
 
 	/* convert the singly linked list in array and recover data with &current */
 	to_array(head, array);
