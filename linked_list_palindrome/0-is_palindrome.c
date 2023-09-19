@@ -34,12 +34,12 @@ void to_array(listint_t **head, int *array)
 int is_palindrome(listint_t **head)
 {
 	listint_t *node = *head;
+	/* create size variable to use in allocations */
+	int size = 0;
 
 	if (node == NULL || node->next == NULL)
 		return (1);
 
-	/* create size variable to use in allocations */
-	int size = 0;
 	/* browse the list and iterate size of the future array */
 	while (node != NULL)
 	{
