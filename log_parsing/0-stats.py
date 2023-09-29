@@ -44,7 +44,7 @@ def print_metric():
     # Iterate through status codes and print their counts if > zero.
     for code in sorted(status_codes.keys()):
         if status_codes[code]:
-            print(f"{code}: {status_codes[code]}")
+            print("{}: {}".format(code, status_codes[code]))
 
 
 if __name__ == "__main__":
