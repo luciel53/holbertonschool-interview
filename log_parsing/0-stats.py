@@ -32,8 +32,8 @@ try:
         line = line.strip()
 
         # Parse the input line using regular expression
-        match = re.match(r'^\d+\.\d+\.\d+\.\d+ - \
-                          [.*\] "GET \/projects\/260 HTTP\/1\.1" (\d+) (\d+)$',
+        match = re.match(r'^\d+\.\d+\.\d+\.\d+ - .*\s"GET \
+                         /projects\/260 HTTP\/1\.1" (\d+) (\d+)$',
                          line)
 
         if match:
