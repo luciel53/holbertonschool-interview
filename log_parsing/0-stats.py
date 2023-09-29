@@ -22,7 +22,6 @@
 import sys
 
 
-# Define dictionary to store status codes and initialize their counts to zero
 status_codes = {
     "200": 0,
     "301": 0,
@@ -34,46 +33,33 @@ status_codes = {
     "500": 0
 }
 
-# Initialize a variable to store total file size
 file_size = 0
 
 
 def print_metric():
-    """ Prints log metrics """
+    """Print of the log."""
     print("File size: {}".format(file_size))
-    # Iterate through status codes and print their counts if > zero.
     for code in sorted(status_codes.keys()):
         if status_codes[code]:
             print("{}: {}".format(code, status_codes[code]))
 
 
 if __name__ == "__main__":
-
     count = 0
     try:
-        # Iterate through each line of input from the standard input
         for line in sys.stdin:
             try:
-                # Split the line into parts based on whitespace.
                 parts = line.split()
-                # Add the last part to the total file size.
                 file_size += int(parts[-1])
-                # If the second-to-last part is valid status code, increment
                 if parts[-2] in status_codes:
                     status_codes[parts[-2]] += 1
             except Exception:
                 pass
-
-            # Check if the count is a multiple of 10, and print log metrics
             if count % 10 == 0:
                 print_metric()
-                # Reset count to -1 to avoid double counting on next iteration
                 count = -1
-            # Increment the count for each processed line
             count += 1
     except KeyboardInterrupt:
-        # If a keyboard interrupt received, print log metrics, raise exception
         print_metric()
         raise
-    # Print the log metrics at the end of processing
     print_metric()
