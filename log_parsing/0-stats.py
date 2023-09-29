@@ -21,6 +21,7 @@
 
 import sys
 
+
 # Define dictionary to store status codes and initialize their counts to zero
 status_codes = {
     "200": 0,
