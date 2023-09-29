@@ -55,10 +55,12 @@ try:
             if line_count % 10 == 0:
                 print("Total file size:", total_size)
                 for code in sorted(status_code_counts.keys()):
-                    print(f"{code}: {status_code_counts[code]}")
+                    print("{}: {}".format(
+                        code, status_code_counts[code]
+                    ))
 
 except KeyboardInterrupt:
     # Handle keyboard interruption (CTRL + C)
     print("Total file size:", total_size)
     for code in sorted(status_code_counts.keys()):
-        print(f"{code}: {status_code_counts[code]}")
+        print("{}: {}".format(code, status_code_counts[code]))
