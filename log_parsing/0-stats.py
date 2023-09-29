@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import sys
 import re
 
@@ -11,7 +12,9 @@ try:
         line = line.strip()
 
         # Parse the input line using regular expression
-        match = re.match(r'^\d+\.\d+\.\d+\.\d+ - \[.*\] "GET \/projects\/260 HTTP\/1\.1" (\d+) (\d+)$', line)
+        match = re.match(r'^\d+\.\d+\.\d+\.\d+ - \
+                          [.*\] "GET \/projects\/260 HTTP\/1\.1" (\d+) (\d+)$',
+                         line)
 
         if match:
             status_code, file_size = map(int, match.groups())
