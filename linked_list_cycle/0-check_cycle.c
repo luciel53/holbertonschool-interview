@@ -11,11 +11,11 @@
 
 int check_cycle(listint_t *list)
 {
-	if (list == NULL)
-		return 0;
-
 	listint_t *ptr1 = list;
 	listint_t *ptr2 = list;
+
+	if (list == NULL)
+		return 0;
 
 	/* browse the list with 2 different pointers */
 	while (ptr1 != NULL && ptr2 != NULL)
