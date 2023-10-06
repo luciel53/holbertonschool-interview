@@ -14,7 +14,7 @@ int check_cycle(listint_t *list)
 	listint_t *ptr1 = list;
 	listint_t *ptr2 = list;
 
-	if (list == NULL)
+	if (list == NULL || ptr1 == NULL || ptr2 == NULL)
 		return 0;
 
 	/* browse the list with 2 different pointers */
