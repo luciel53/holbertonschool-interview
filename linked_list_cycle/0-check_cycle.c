@@ -11,11 +11,22 @@
 
 int check_cycle(listint_t *list)
 {
-	/* browse the list */
-	list = list->next;
+	listint_t *ptr1 = list;
+	listint_t *ptr2 = list;
 
-	if (list->next == NULL)
-		return (0);
-		
-	return (1);
+	if (list == NULL)
+		return 0;
+
+	/* browse the list with 2 different pointers */
+	while (ptr1 != NULL && ptr2 != NULL)
+	{
+		ptr1 = ptr1->next;
+		ptr2 = ptr2->next->next;
+
+		/* if the 2 pointers meet at the same node -> cycle */
+		if (ptr2 == ptr1)
+			return (1);
+	}
+
+	return (0);
 }
