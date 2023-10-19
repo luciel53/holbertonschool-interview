@@ -38,10 +38,5 @@ def validUTF8(data):
             else:
                 return False
 
-        # Check for the validity of the value in the multi-byte sequence.
-        if nb_bytes > 0:
-            if not (128 <= num < 192):
-                return False
-
     # if nb_bytes not zero, it's an incomplete character sequence.
     return nb_bytes == 0
