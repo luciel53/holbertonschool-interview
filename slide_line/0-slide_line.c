@@ -50,17 +50,17 @@ int slide_line(int *line, size_t size, int direction)
 	}
 
 
-	for (m = 0; m < size; m++)
-	{
+	// for (m = 0; m < size; m++)
+	// {
 
-		printf("%d ", line[m]);
-	}
-	printf("\n");
-	for (m = 0; m < size; m++)
-	{
-		printf("%d ", list[m]);
-	}
-	printf("\n");
+	// 	printf("%d ", line[m]);
+	// }
+	// printf("\n");
+	// for (m = 0; m < size; m++)
+	// {
+	// 	printf("%d ", list[m]);
+	// }
+	// printf("\n");
 	for (m = 0; m < size; m++)
 	{
 		line[m] = list[m];
