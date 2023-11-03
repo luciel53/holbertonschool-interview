@@ -4,55 +4,68 @@
 #include "slide_line.h"
 
 /**
- * slide_line -
- *
+ * slide_line - Slide and merge integers in a line.
+ * @line: Pointer to the line of integers.
+ * @size: Number of elements in the line.
+ * @direction: Direction to slide (SLIDE_LEFT or SLIDE_RIGHT).
+ * Return: 1 on success, 0 on failure.
  */
-
 int slide_line(int *line, size_t size, int direction)
 {
-	int number;
-	unsigned int i, k, m;
-	int j;
-	int list[10000];
+    if (line == NULL || (direction != SLIDE_LEFT && direction != SLIDE_RIGHT))
+        return 0;
 
-	for (i = 0; i < size; i++)
-	{
-		list[i] = 0;
-	}
+    size_t i;
+    int j;
 
-	j = 0;
-	for (i = 0; i < size; i++)
-	{
-		if (line[i] != 0)
-		{
-			number = line[i];
-			for (k = i+1; k < size; k++)
-			{
-				i++;
-				if (line[k] == number)
-				{
-					list[j] = number * 2;
-					j++;
-					break;
-				}
-				else if (line[k] == 0)
-				{
-					continue;
-				}
-				else
-				{
-					i--;
-					break;
-				}
-			}
-		}
+    if (direction == SLIDE_LEFT) {
+        for (i = 0; i < size; i++) {
+            if (line[i] != 0) {
+                for (j = (int)i + 1; j < (int)size; j++) { // Conversion explicite
+                    if (line[j] != 0) {
+                        if (line[i] == line[j]) {
+                            line[i] *= 2;
+                            line[j] = 0;
+                            break;
+                        } else {
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    } else if (direction == SLIDE_RIGHT) {
+        for (i = size - 1; i < size; i--) {
+            if (line[i] != 0) {
+                for (j = (int)i - 1; j >= 0; j--) { // Conversion explicite
+                    if (line[j] != 0) {
+                        if (line[i] == line[j]) {
+                            line[i] *= 2;
+                            line[j] = 0;
+                            break;
+                        } else {
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    }
 
-	}
+    // Compact the line to the specified direction
+    for (i = 0, j = 0; i < size; i++) {
+        if (line[i] != 0) {
+            if (direction == SLIDE_LEFT) {
+                line[j] = line[i];
+            } else {
+                line[size - 1 - j] = line[i];
+            }
+            if (j != (int)i) { // Conversion explicite
+                line[i] = 0;
+            }
+            j++;
+        }
+    }
 
-	for (m = 0; m < size; m++)
-	{
-		line[m] = list[m];
-		i = direction;
-	}
-	return(1);
+    return 1;
 }
