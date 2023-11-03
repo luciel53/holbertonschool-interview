@@ -12,16 +12,15 @@
  */
 int slide_line(int *line, size_t size, int direction)
 {
-    size_t i;
-    int j;
-
     if (line == NULL || (direction != SLIDE_LEFT && direction != SLIDE_RIGHT))
         return 0;
 
+    int i, j;
+
     if (direction == SLIDE_LEFT) {
-        for (i = 0; i < size; i++) {
+        for (i = 0; i < (int)size; i++) {
             if (line[i] != 0) {
-                for (j = (int)i + 1; j < (int)size; j++) {
+                for (j = i + 1; j < (int)size; j++) {
                     if (line[j] != 0) {
                         if (line[i] == line[j]) {
                             line[i] *= 2;
@@ -33,11 +32,21 @@ int slide_line(int *line, size_t size, int direction)
                     }
                 }
             }
+        }
+
+        for (i = 0, j = 0; i < (int)size; i++) {
+            if (line[i] != 0) {
+                line[j++] = line[i];
+            }
+        }
+
+        for (; j < (int)size; j++) {
+            line[j] = 0;
         }
     } else if (direction == SLIDE_RIGHT) {
-        for (i = size - 1; (int)i < (int)size; i--) {
+        for (i = (int)size - 1; i >= 0; i--) {
             if (line[i] != 0) {
-                for (j = (int)i - 1; j >= 0; j--) {
+                for (j = i - 1; j >= 0; j--) {
                     if (line[j] != 0) {
                         if (line[i] == line[j]) {
                             line[i] *= 2;
@@ -50,19 +59,15 @@ int slide_line(int *line, size_t size, int direction)
                 }
             }
         }
-    }
 
-    for (i = 0, j = 0; i < size; i++) {
-        if (line[i] != 0) {
-            if (direction == SLIDE_LEFT) {
-                line[j] = line[i];
-            } else {
-                line[size - 1 - j] = line[i];
+        for (i = (int)size - 1, j = (int)size - 1; i >= 0; i--) {
+            if (line[i] != 0) {
+                line[j--] = line[i];
             }
-            if (j != (int)i) {
-                line[i] = 0;
-            }
-            j++;
+        }
+
+        for (; j >= 0; j--) {
+            line[j] = 0;
         }
     }
 
