@@ -21,7 +21,7 @@ int slide_line(int *line, size_t size, int direction)
     if (direction == SLIDE_LEFT) {
         for (i = 0; i < size; i++) {
             if (line[i] != 0) {
-                for (j = (int)i + 1; j < (int)size; j++) { // Conversion explicite
+                for (j = (int)i + 1; j < (int)size; j++) {
                     if (line[j] != 0) {
                         if (line[i] == line[j]) {
                             line[i] *= 2;
@@ -35,9 +35,9 @@ int slide_line(int *line, size_t size, int direction)
             }
         }
     } else if (direction == SLIDE_RIGHT) {
-        for (i = size - 1; i < size; i--) {
+        for (i = size - 1; (int)i < (int)size; i--) {
             if (line[i] != 0) {
-                for (j = (int)i - 1; j >= 0; j--) { // Conversion explicite
+                for (j = (int)i - 1; j >= 0; j--) {
                     if (line[j] != 0) {
                         if (line[i] == line[j]) {
                             line[i] *= 2;
@@ -52,7 +52,7 @@ int slide_line(int *line, size_t size, int direction)
         }
     }
 
-    // Compact the line to the specified direction
+    /* Compact the line to the specified direction */
     for (i = 0, j = 0; i < size; i++) {
         if (line[i] != 0) {
             if (direction == SLIDE_LEFT) {
@@ -60,7 +60,7 @@ int slide_line(int *line, size_t size, int direction)
             } else {
                 line[size - 1 - j] = line[i];
             }
-            if (j != (int)i) { // Conversion explicite
+            if (j != (int)i) {
                 line[i] = 0;
             }
             j++;
