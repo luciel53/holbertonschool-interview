@@ -12,11 +12,11 @@
  */
 int slide_line(int *line, size_t size, int direction)
 {
-    if (line == NULL || (direction != SLIDE_LEFT && direction != SLIDE_RIGHT))
-        return 0;
-
     size_t i;
     int j;
+
+    if (line == NULL || (direction != SLIDE_LEFT && direction != SLIDE_RIGHT))
+        return 0;
 
     if (direction == SLIDE_LEFT) {
         for (i = 0; i < size; i++) {
@@ -52,7 +52,6 @@ int slide_line(int *line, size_t size, int direction)
         }
     }
 
-    /* Compact the line to the specified direction */
     for (i = 0, j = 0; i < size; i++) {
         if (line[i] != 0) {
             if (direction == SLIDE_LEFT) {
