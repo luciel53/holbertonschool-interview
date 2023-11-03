@@ -13,7 +13,8 @@ int slide_line(int *line, size_t size, int direction)
 	int number;
 	unsigned int i, k, m;
 	int j;
-	int list[size];
+	const unsigned int size2 = size;
+	int list[size2];
 
 	for (i = 0; i < size; i++)
 	{
