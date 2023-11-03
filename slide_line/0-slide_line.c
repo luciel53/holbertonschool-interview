@@ -64,6 +64,7 @@ int slide_line(int *line, size_t size, int direction)
 	for (m = 0; m < size; m++)
 	{
 		line[m] = list[m];
+		i = direction;
 	}
 	return(1);
 }
