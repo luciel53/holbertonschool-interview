@@ -12,6 +12,9 @@ void menger(int level)
 {
 	int i, j, n, espace, k, itemp, jtemp;
 
+	if (level < 0)
+		return;
+
 	n = level;
 	level = 1;
 
