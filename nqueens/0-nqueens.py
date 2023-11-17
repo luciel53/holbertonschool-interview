@@ -21,72 +21,48 @@
 import sys
 
 
-def verif(queen, queens_list, n):
+def is_safe_position(queen, queens_list):
     """
-    function that returns True if no queen in queens_list is on the same
-    diagonale as queen False otherwise
+    Function that returns True if no queen in queens_list is on the same
+    diagonal as queen, False otherwise.
     """
     for q in queens_list:
-        if queen[0] == q[0] or queen[1] == q[1]:
+        if queen[0] == q[0] or queen[1] == q[1] or abs(queen[0] - q[0]) == abs(queen[1] - q[1]):
             return False
-
-    check = [0, 0]
-    check[0] = queen[0]
-    check[1] = queen[1]
-    for i in range(n):
-        check[0] += 1
-        check[1] += 1
-        for q in queens_list:
-            if check == q:
-                return False
-
-    check[0] = queen[0]
-    check[1] = queen[1]
-    for i in range(n):
-        check[0] -= 1
-        check[1] += 1
-        for q in queens_list:
-            if check == q:
-                return False
-
-    check[0] = queen[0]
-    check[1] = queen[1]
-    for i in range(n):
-        check[0] += 1
-        check[1] -= 1
-        for q in queens_list:
-            if check == q:
-                return False
-
-    check[0] = queen[0]
-    check[1] = queen[1]
-    for i in range(n):
-        check[0] -= 1
-        check[1] -= 1
-        for q in queens_list:
-            if check == q:
-                return False
     return True
 
+def nqueens_N_helper(n, queens_left, queens_list, solutions, i):
+    if queens_left == 0:
+        solutions.append(sorted(queens_list))
+        return solutions
 
-def nqueens_N(n, nbQ, queens_list=[], solutions=[], imin = 0):
-    if nbQ == 0:
-        if sorted(queens_list) not in solutions:
-            solutions.append(sorted(queens_list))
-        return (solutions)
-    for i in range(imin, n):
-        for j in range(n):
-            ql = queens_list.copy()
-            if verif([i, j], queens_list, n):
-                ql.append([i, j])
-                answer = nqueens_N(n, nbQ - 1, ql, solutions, i)
-                if answer != "No Solution":
-                    solutions = answer
-    if queens_list == []:
-        return (solutions)
-    return("No Solution")
+    for j in range(n):
+        if is_safe_position([i, j], queens_list):
+            solutions = nqueens_N_helper(n, queens_left - 1, queens_list + [[i, j]], solutions, i + 1)
 
+    return solutions
 
-parametre_entré = int(sys.argv[1])
-for n in nqueens_N(parametre_entré, parametre_entré):
-    print(n)
+def nqueens_N(n):
+    if n < 4:
+        print("N must be at least 4")
+        sys.exit(1)
+
+    solutions = nqueens_N_helper(n, n, [], [], 0)
+    if solutions == []:
+        print("No Solution")
+    else:
+        for solution in solutions:
+            print(solution)
+
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("Usage: nqueens N")
+        sys.exit(1)
+
+    try:
+        parametre_entre = int(sys.argv[1])
+    except ValueError:
+        print("N must be a number")
+        sys.exit(1)
+
+    nqueens_N(parametre_entre)
