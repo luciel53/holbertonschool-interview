@@ -27,9 +27,14 @@ def is_safe_position(queen, queens_list):
     diagonal as queen, False otherwise.
     """
     for q in queens_list:
-        if queen[0] == q[0] or queen[1] == q[1] or abs(queen[0] - q[0]) == abs(queen[1] - q[1]):
+        if (
+            queen[0] == q[0] or
+            queen[1] == q[1] or
+            abs(queen[0] - q[0]) == abs(queen[1] - q[1])
+        ):
             return False
     return True
+
 
 def nqueens_N_helper(n, queens_left, queens_list, solutions, i):
     if queens_left == 0:
@@ -38,9 +43,11 @@ def nqueens_N_helper(n, queens_left, queens_list, solutions, i):
 
     for j in range(n):
         if is_safe_position([i, j], queens_list):
-            solutions = nqueens_N_helper(n, queens_left - 1, queens_list + [[i, j]], solutions, i + 1)
+            solutions = nqueens_N_helper(n, queens_left - 1, queens_list +
+                                         [[i, j]], solutions, i + 1)
 
     return solutions
+
 
 def nqueens_N(n):
     if n < 4:
@@ -53,6 +60,7 @@ def nqueens_N(n):
     else:
         for solution in solutions:
             print(solution)
+
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
