@@ -69,17 +69,17 @@ def verif(queen, queens_list, n):
     return True
 
 
-def nqueens_N(n, nbQ, queens_list=[], solutions=[]):
+def nqueens_N(n, nbQ, queens_list=[], solutions=[], imin = 0):
     if nbQ == 0:
         if sorted(queens_list) not in solutions:
             solutions.append(sorted(queens_list))
         return (solutions)
-    for i in range(n):
+    for i in range(imin, n):
         for j in range(n):
             ql = queens_list.copy()
             if verif([i, j], queens_list, n):
                 ql.append([i, j])
-                answer = nqueens_N(n, nbQ - 1, ql, solutions)
+                answer = nqueens_N(n, nbQ - 1, ql, solutions, i)
                 if answer != "No Solution":
                     solutions = answer
     if queens_list == []:
