@@ -14,11 +14,13 @@ avl_t *sorted_array_to_avl(int *array, size_t size)
 {
 	if (size == 0)
 		return (NULL);
+
 	int mediane;
 	int newsize;
 	avl_t *root;
 
 	root = malloc(sizeof(avl_t));
+	
 	newsize = (size - 1) / 2;
 	mediane = array[newsize];
 	root->n = mediane;
