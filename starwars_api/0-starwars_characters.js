@@ -4,13 +4,14 @@ const request = require('request');
 const arg = process.argv[2];
 const url = (`https://swapi-api.hbtn.io/api/films/${arg}`);
 
-const charNames = (names, i = 0) => {
-  request(names[i], (error, response, body) => {
+const charNames = (characters, i = 0) => {
+  if (i === characters.length) return;
+  request(characters[i], (error, response, body) => {
     if (error) throw error;
     /* convert a string of characters JSON to a javascript object and print it */
     console.log(JSON.parse(body).name);
     /* call recursively the function charnames and increment it to pass at the next character */
-    charNames(names, i + 1);
+    charNames(characters, i + 1);
   });
 };
 
