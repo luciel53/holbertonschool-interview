@@ -1,3 +1,8 @@
+#!/usr/bin/python3
+"""
+0-count
+"""
+
 import requests
 
 def count_words(subreddit, word_list, after=None, count_dict=None):
@@ -6,6 +11,7 @@ def count_words(subreddit, word_list, after=None, count_dict=None):
 
     url = f"https://www.reddit.com/r/{subreddit}/hot.json"
     params = {'limit': 25}
+
     if after:
         params['after'] = after
 
@@ -37,11 +43,3 @@ def count_words(subreddit, word_list, after=None, count_dict=None):
             for keyword, count in sorted_counts:
                 print(f"{keyword}: {count}")
 
-if __name__ == '__main__':
-    import sys
-
-    if len(sys.argv) < 3:
-        print("Usage: {} <subreddit> <list of keywords>".format(sys.argv[0]))
-        print("Ex: {} programming 'python java javascript'".format(sys.argv[0]))
-    else:
-        count_words(sys.argv[1], [x for x in sys.argv[2].split()])
