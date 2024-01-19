@@ -1,8 +1,3 @@
-#!/usr/bin/python3
-"""
-0-count
-"""
-
 import requests
 
 def count_words(subreddit, word_list, after=None, count_dict=None):
@@ -11,11 +6,10 @@ def count_words(subreddit, word_list, after=None, count_dict=None):
 
     url = f"https://www.reddit.com/r/{subreddit}/hot.json"
     params = {'limit': 25}
-
     if after:
         params['after'] = after
 
-    headers = {'User-Agent': 'your_user_agent'}
+    headers = {'User-Agent': 'YourAppName/1.0 (by /u/YourRedditUsername)'}
 
     response = requests.get(url, params=params, headers=headers)
 
@@ -42,4 +36,3 @@ def count_words(subreddit, word_list, after=None, count_dict=None):
             sorted_counts = sorted(count_dict.items(), key=lambda x: (-x[1], x[0]))
             for keyword, count in sorted_counts:
                 print(f"{keyword}: {count}")
-
