@@ -1,5 +1,6 @@
 {
-	"files.associations": {
-		"binary_trees.h": "c"
-	}
+  "files.associations": {
+    "binary_trees.h": "c",
+    "search_algos.h": "c"
+  }
 }
