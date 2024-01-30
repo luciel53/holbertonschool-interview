@@ -4,6 +4,7 @@ Test  - Rotate 2D Matrix
 """
 
 def rotate_2d_matrix(matrix):
+    """rotates a 2D Matrix"""
     length = len(matrix)
     new_matrix = []
     for i in range(length):
