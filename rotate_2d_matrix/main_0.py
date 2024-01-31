@@ -3,7 +3,9 @@
 Test  - Rotate 2D Matrix
 """
 rotate_2d_matrix = __import__('0-rotate_2d_matrix').rotate_2d_matrix
+d = __import__('0-rotate_2d_matrix').__doc__
 
+print(d)
 if __name__ == "__main__":
     matrix = [[1, 2, 3],
               [4, 5, 6],
