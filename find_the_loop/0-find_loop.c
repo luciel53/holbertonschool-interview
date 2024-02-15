@@ -7,13 +7,7 @@
 /**
  * find_listint_loop - function that finds the loop in a linked list.
  * @head: the head of the list
- * Return: The address of the node where the loop starts, or NULL if there is no loop
- */
-
-/**
- * find_listint_loop - function that finds the loop in a linked list.
- * @head: the head of the list
- * Return: The address of the node where the loop starts, or NULL if there is no loop
+ * Return: address of node where the loop starts or NULL if there is no loop
  */
 
 listint_t *find_listint_loop(listint_t *head)
@@ -33,10 +27,10 @@ listint_t *find_listint_loop(listint_t *head)
                 ptr1 = ptr1->next;
                 ptr2 = ptr2->next;
             }
-            return ptr1; // Returns the node where the loop starts
+            return (ptr1); /* Returns the node where the loop starts */
         }
     }
 
-    return NULL; // No loop found
+    return (NULL); /* No loop found */
 }
 
