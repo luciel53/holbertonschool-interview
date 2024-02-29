@@ -14,32 +14,23 @@ coins needed to meet a given amount total.
     Your solution’s runtime will be evaluated in this task
 """
 
+
 def makeChange(coins, total):
-  """
-  This function determines the fewest number of coins needed to meet a given amount.
-
-  Args:
-      coins: A list of integer coin values (greater than 0).
-      total: The target amount to reach using coins.
-
-  Returns:
-      The fewest number of coins needed to reach the total, or -1 if impossible.
-  """
-
-  # Use dynamic programming for efficient solution
-  dp = [float('inf')] * (total + 1)  # Initialize DP table with infinity values
-
-  # Base case: 0 coins needed for 0 total
-  dp[0] = 0
-
-  # Iterate through each coin value
-  for coin in coins:
-    # Iterate through all possible totals from 0 to target amount
-    for i in range(coin, total + 1):
-      # Check if current coin value is less than or equal to current total
-      if coin <= i:
-        # Minimum of current minimum and (previous minimum + 1) using the coin
-        dp[i] = min(dp[i], dp[i - coin] + 1)
-
-  # Return the answer from the DP table for the target amount
-  return dp[-1] if dp[-1] != float('inf') else -1  # Check for unreachable total
+    """
+    This function determines the fewest number of coins needed to meet a given
+    amount.
+    """
+    # Use dynamic programming for efficient solution
+    dp = [float('inf')] * (total + 1)  # Set DP table with infinity values
+    # Base case: 0 coins needed for 0 total
+    dp[0] = 0
+    # Iterate through each coin value
+    for coin in coins:
+        # Iterate through all possible totals from 0 to target amount
+        for i in range(coin, total + 1):
+            # Check if current coin value less than or equal to current total
+            if coin <= i:
+                # Minimum of current minimum &(previous minimum + 1) using coin
+                dp[i] = min(dp[i], dp[i - coin] + 1)
+    # Return the answer from the DP table for the target amount
+    return dp[-1] if dp[-1] != float('inf') else -1
