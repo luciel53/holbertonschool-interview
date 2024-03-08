@@ -1,8 +1,8 @@
 #ifndef LIST_H
 #define LIST_H
 
-#include <stdlib.h> // For malloc, free
-#include <string.h> // For strdup
+#include <stdlib.h>
+#include <string.h>
 
 /**
  * struct List - doubly linked list
