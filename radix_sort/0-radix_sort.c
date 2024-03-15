@@ -66,9 +66,13 @@ void radix_sort(int *array, size_t size)
 {
 	if (size < 2)
 		return;
-	int max = getMax(array, size);
+	int max;
+	int exp;
+
+	max = getMax(array, size);
+
 	/* Do counting sort for every digit */
-	for (int exp = 1; max / exp > 0; exp *= 10)
+	for (exp = 1; max / exp > 0; exp *= 10)
 	{
 		countSort(array, size, exp);
 		print_array(array, size); /* Print array after each significant digit*/
