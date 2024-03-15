@@ -64,12 +64,13 @@ void countSort(int *array, size_t size, int exp)
 */
 void radix_sort(int *array, size_t size)
 {
+	int max;
+
 	if (size < 2)
 		return;
-	int max;
-	int exp;
 
 	max = getMax(array, size);
+	int exp;
 
 	/* Do counting sort for every digit */
 	for (exp = 1; max / exp > 0; exp *= 10)
