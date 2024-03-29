@@ -33,20 +33,20 @@ int is_bst(const binary_tree_t *tree, int low, int high) {
 }
 
 int binary_tree_is_avl(const binary_tree_t *tree) {
+  int left_height, right_height, balance_factor;
+
   if (tree == NULL) {
     return 0;
   }
 
-  // Check if the tree is a Binary Search Tree (BST)
   if (!is_bst(tree, INT_MIN, INT_MAX)) {
     return 0;
   }
 
-  // Check balance factor for each node
-  int left_height = height(tree->left);
-  int right_height = height(tree->right);
+  left_height = height(tree->left);
+  right_height = height(tree->right);
 
-  int balance_factor = abs_diff(left_height, right_height);
+  balance_factor = abs_diff(left_height, right_height);
 
   return balance_factor <= 1;
 }
