@@ -10,12 +10,13 @@ int max(int a, int b) {
 }
 
 int height(const binary_tree_t *tree) {
+    int left_height, right_height;
   if (tree == NULL) {
     return 0;
   }
 
-  int left_height = height(tree->left);
-  int right_height = height(tree->right);
+  left_height = height(tree->left);
+  right_height = height(tree->right);
 
   return 1 + max(left_height, right_height);
 }

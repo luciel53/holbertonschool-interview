@@ -3,6 +3,11 @@
 #include <string.h>
 #include "binary_trees.h"
 
+
+
+static int print_t(const binary_tree_t *tree, int offset, int depth, char **s);
+static size_t _height(const binary_tree_t *tree);
+
 /* Original code from http://stackoverflow.com/a/13755911/5184480 */
 
 /**
