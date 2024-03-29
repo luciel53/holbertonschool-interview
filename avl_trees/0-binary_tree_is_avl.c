@@ -49,5 +49,5 @@ int binary_tree_is_avl(const binary_tree_t *tree) {
 
   balance_factor = abs_diff(left_height, right_height);
 
-  return balance_factor <= 1;
+  return balance_factor < 1;
 }
