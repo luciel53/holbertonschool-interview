@@ -63,6 +63,7 @@ if (found_all_words)
 indices = realloc(indices, *n * sizeof(int));
 indices[*n - 1] = i;
 }
+free(used_words);
 }
 return (indices);
 }
