@@ -37,12 +37,12 @@ int *indices = malloc(0 * sizeof(int));
 for (int i = 0; i <= s_len - total_len; i++)
 {
 int found_all_words = 1;
-int used_words[nb_words];
+int used_words[nb_words], j;
 memset(used_words, 0, sizeof(used_words));
-for (int j = i; j < i + total_len; j += word_len)
+for (j = i; j < i + total_len; j += word_len)
 {
-int found_word = 0;
-for (int k = 0; k < nb_words; k++)
+int found_word = 0, k;
+for (k = 0; k < nb_words; k++)
 {
 if (!used_words[k] && compare_words(s + j, words[k], word_len) == 0)
 {
