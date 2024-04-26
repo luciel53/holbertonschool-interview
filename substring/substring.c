@@ -31,12 +31,14 @@ if (total_len > s_len)
 *n = 0;
 return (NULL);
 }
-int *indices, i;
+int *indices;
+int i;
 indices = malloc(0 * sizeof(int));
 *n = 0;
 for (i = 0; i <= s_len - total_len; i++)
 {
-int found_all_words = 1, j;
+int found_all_words = 1;
+int j;
 int used_words[nb_words];
 memset(used_words, 0, sizeof(used_words));
 for (j = i; j < i + total_len; j += word_len)
