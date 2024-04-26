@@ -26,13 +26,13 @@ int *find_substring(char const *s, char const **words, int nb_words, int *n)
 int word_len = strlen(words[0]);
 int s_len = strlen(s);
 int total_len = word_len * nb_words;
+int *indices = NULL;
+int i;
 if (total_len > s_len)
 {
 *n = 0;
 return (NULL);
 }
-int *indices;
-int i;
 indices = malloc(0 * sizeof(int));
 *n = 0;
 for (i = 0; i <= s_len - total_len; i++)
