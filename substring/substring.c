@@ -39,8 +39,8 @@ for (i = 0; i <= s_len - total_len; i++)
 {
 int found_all_words = 1;
 int j;
-int used_words[nb_words];
-memset(used_words, 0, sizeof(used_words));
+int *used_words = malloc(nb_words * sizeof(int));
+memset(used_words, 0, nb_words * sizeof(int));
 for (j = i; j < i + total_len; j += word_len)
 {
 int found_word = 0, k;
