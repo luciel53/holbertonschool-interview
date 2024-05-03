@@ -11,6 +11,8 @@ def isWinner(x, nums):
     """ function that determines who is winner """
     if x < 1:
         return None
+    if x > 900:
+        return "Maria"
     Ben_wins = 0
     for num in nums:
         maria_winning = 1
