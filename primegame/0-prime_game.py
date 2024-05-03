@@ -18,9 +18,9 @@ def isWinner(x, nums):
                 maria_winning = 0
             else:
                 maria_winning = 1
-            for delet in numbers:
-                if delet % number == 0:
-                    numbers.remove(delet)
+
+            for delet in range(1, num + 1, number):
+                numbers.remove(delet)
         maria_wins += maria_winning
         if maria_wins >= (x/2):
             return "Maria"
