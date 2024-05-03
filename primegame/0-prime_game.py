@@ -8,7 +8,9 @@
 
 
 def isWinner(x, nums):
+    """ function that determines who is winner """
     def is_prime(num):
+        """ prime numbers """
         if num < 2:
             return False
         for i in range(2, int(num ** 0.5) + 1):
@@ -17,13 +19,14 @@ def isWinner(x, nums):
         return True
 
     def next_prime(start):
+        """ next prime number """
         num = start + 1
         while not is_prime(num):
             num += 1
         return num
 
     def game_winner(n):
-        # If n is even, Ben will win because Maria starts
+        """ If n is even, Ben will win because Maria starts """
         if n % 2 == 0:
             return "Ben"
         else:
