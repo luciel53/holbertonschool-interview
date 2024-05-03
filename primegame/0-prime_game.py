@@ -15,7 +15,8 @@ def isWinner(x, nums):
     for num in nums:
         maria_winning = 1
         numbers = list(range(2, num + 1))
-        for number in numbers:
+        while numbers != []:
+            number = numbers[0]
             if maria_winning:
                 maria_winning = 0
             else:
