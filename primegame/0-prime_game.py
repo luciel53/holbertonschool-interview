@@ -13,7 +13,7 @@ def isWinner(x, nums):
         return None
     maria_wins = 0
     for num in nums:
-        maria_winning = 0
+        maria_winning = 1
         numbers = list(range(2, num + 1))
         for number in numbers:
             if maria_winning:
