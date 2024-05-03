@@ -22,6 +22,6 @@ def isWinner(x, nums):
                 if delet % number == 0:
                     numbers.remove(delet)
         maria_wins += maria_winning
-        if maria_wins > (x/2):
+        if maria_wins >= (x/2):
             return "Maria"
     return "Ben"
