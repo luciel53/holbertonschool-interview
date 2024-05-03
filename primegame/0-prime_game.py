@@ -11,7 +11,7 @@ def isWinner(x, nums):
     """ function that determines who is winner """
     if x < 1:
         return None
-    maria_wins = 0
+    Ben_wins = 0
     for num in nums:
         maria_winning = 1
         numbers = list(range(2, num + 1))
@@ -26,7 +26,7 @@ def isWinner(x, nums):
                     numbers.remove(delet)
                 except ValueError:
                     pass
-        maria_wins += maria_winning
-        if maria_wins >= (x/2):
-            return "Maria"
-    return "Ben"
+        Ben_wins += maria_winning
+        if Ben_wins >= (x/2):
+            return "Ben"
+    return "Maria"
